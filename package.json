@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "tsc",
     "postinstall": "npx prisma generate",
