@@ -1,11 +1,11 @@
 {
   "name": "dyn-lib",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
   "private": true,
-  "scripts": {                      
-    "build": "tsc",                           
+  "scripts": {
+    "build": "tsc",
     "postinstall": "npx prisma generate",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev"
