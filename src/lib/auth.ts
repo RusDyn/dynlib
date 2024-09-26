@@ -1,15 +1,15 @@
 //import Google from "next-auth/providers/google"
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { PrismaClient } from '@prisma/client';
-import type { Session } from 'next-auth';
-import NextAuth from 'next-auth';
+import type { CredentialsSignin, Session } from 'next-auth';
+import NextAuth, { type NextAuthConfig } from 'next-auth';
 import type { JWT } from 'next-auth/jwt';
 import Google from 'next-auth/providers/google';
 import Resend from 'next-auth/providers/resend';
 
 const prisma = new PrismaClient();
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+const authOptions: NextAuthConfig = {
   adapter: PrismaAdapter(prisma),
   providers: [
     Google({
@@ -49,7 +49,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
     }
   }
-});
+};
+
+export const { handlers, signIn, signOut, auth } = NextAuth(authOptions) as {
+  handlers: any;
+  signIn: (credentials?: any) => Promise<CredentialsSignin>;
+  signOut: (options?: any) => Promise<void>;
+  auth: () => Promise<Session | null>;
+};
 
 export async function getUserIdFromSession() {
   const session = await auth();
