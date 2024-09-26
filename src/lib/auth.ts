@@ -9,7 +9,7 @@ import Resend from 'next-auth/providers/resend';
 
 const prisma = new PrismaClient();
 
-const authOptions: NextAuthConfig = {
+export const authOptions: NextAuthConfig = {
   adapter: PrismaAdapter(prisma),
   providers: [
     Google({
