@@ -9,7 +9,7 @@ import Resend from 'next-auth/providers/resend';
 
 const prisma = new PrismaClient();
 
-export const authOptions: NextAuthConfig = {
+const authOptions: NextAuthConfig = {
   adapter: PrismaAdapter(prisma),
   providers: [
     Google({
@@ -51,7 +51,7 @@ export const authOptions: NextAuthConfig = {
   }
 };
 
-export const { handlers, signIn, signOut, auth } = NextAuth(authOptions) as {
+export const nextAuth = NextAuth(authOptions) as {
   handlers: any;
   signIn: (credentials?: any) => Promise<CredentialsSignin>;
   signOut: (options?: any) => Promise<void>;
@@ -59,7 +59,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth(authOptions) as {
 };
 
 export async function getUserIdFromSession() {
-  const session = await auth();
+  const session = await nextAuth.auth();
   if (!session || !session.user) {
     throw new Error('Not authenticated');
   }
