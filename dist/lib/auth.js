@@ -104,7 +104,6 @@ var authOptions = {
         }
     }
 };
-var nextAuth = NextAuth(authOptions);
 export var handlers = (_a = NextAuth(authOptions), _a.handlers), signIn = _a.signIn, signOut = _a.signOut, auth = _a.auth;
 export function getUserIdFromSession() {
     return __awaiter(this, void 0, void 0, function () {
