@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "private": false,
   "scripts": {
-    "build": "rm -r dist && tsc",
+    "build": "rm -r dist || true  && tsc",
     "postinstall": "npx prisma generate",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev"
