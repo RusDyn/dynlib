@@ -11,12 +11,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/src/components/ui/dropdown-menu';
-import { auth, signOut } from '@/src/lib/auth';
+import { nextAuth } from '@/src/lib/auth';
 
 import { CrispButton } from './chrisp-chat';
 
 export async function User() {
-  let session = await auth();
+  let session = await nextAuth.auth();
   let user = session?.user;
 
   return (
@@ -51,7 +51,7 @@ export async function User() {
             <form
               action={async () => {
                 'use server';
-                await signOut();
+                await nextAuth.signOut();
                 redirect('/login');
               }}
             >

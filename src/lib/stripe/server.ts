@@ -2,7 +2,7 @@
 
 import type Stripe from 'stripe';
 
-import { auth } from '@/src/lib/auth';
+import { nextAuth } from '@/src/lib/auth';
 
 import { stripe } from './config';
 import { createOrRetrieveCustomer, getErrorRedirect, getURL } from './utils';
@@ -17,8 +17,8 @@ export async function checkoutWithStripe(
   redirectPath: string = '/settings'
 ): Promise<CheckoutResponse> {
   try {
-    // Get the user from Supabase auth
-    const session = await auth();
+    // Get the user from auth
+    const session = await nextAuth.auth();
 
     if (!session || !session.user) {
       throw new Error('Could not get user session.');
@@ -94,7 +94,7 @@ const getCustomer = async (userId: string = '', email: string = '') => {
 };
 export async function createStripePortal(currentPath: string) {
   try {
-    const session = await auth();
+    const session = await nextAuth.auth();
     if (!session) {
       throw new Error('Could not get user session.');
     }
