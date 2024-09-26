@@ -54,7 +54,8 @@
     "vaul": "^0.9.1"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "prisma/**/*"
   ],
   "prettier": {
     "arrowParens": "always",
