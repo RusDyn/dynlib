@@ -1,0 +1,17 @@
+src/
+.devcontainer.json
+.eslintignore
+.eslintrc.js
+.gitignore
+.prettierignore
+.prettierrc.js
+.vscode/
+components.json
+LICENSE.md
+package.json
+pnpm-lock.yaml
+prettier.config.js
+prisma/
+README.md
+tailwind.config.ts
+tsconfig.json
