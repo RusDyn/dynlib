@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": false, // Changed to allow emitting compiled files
+    "noEmit": false,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -38,8 +38,9 @@
         "name": "next"
       }
     ],
-    "outDir": "./dist", // Added to specify output directory
-    "rootDir": "./src" // Added to specify root directory
+    "outDir": "./dist",
+    "declaration": true, // Add this line to generate declaration files
+    "declarationDir": "./dist/types" // Optional: specify the directory for declaration files
   },
   "include": [
     "next-env.d.ts",
